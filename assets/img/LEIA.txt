@@ -1,0 +1,2 @@
+Coloque aqui as fotos .webp com os nomes que aparecem no site (ex: hero.webp, buque-aurora.webp).
+Enquanto nao existirem, o site mostra um quadro na cor da marca.
