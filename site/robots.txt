@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hapuckscents.com.br/sitemap.xml
