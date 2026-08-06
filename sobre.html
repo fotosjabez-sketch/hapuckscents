@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>A marca — Hapuck Scents</title>
-<meta name="description" content="Como nasce um buquê de flor de sabonete e um difusor Hapuck Scents: ateliê, feitura à mão e a ideia de que cheiro é lugar, não produto.">
+<meta name="description" content="Como nasce um buquê de vela e um difusor Hapuck Scents: ateliê, feitura à mão e a ideia de que cheiro é lugar, não produto.">
 <meta name="theme-color" content="#F3E9E1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -208,6 +208,11 @@ a:hover>.frame img{transform:scale(1.05)}
 
 /* ---- CTA final -------------------------------------------------------- */
 .cta{background:var(--bordo);color:var(--marfim);text-align:center}
+.cta{position:relative;overflow:hidden}
+.cta__wreath{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:min(78vw,900px);height:auto;pointer-events:none;z-index:0}
+.cta .env{position:relative;z-index:1}
+
 .cta h2{font-size:clamp(2.4rem,6vw,5rem);max-width:16ch;margin-inline:auto}
 .cta p{color:rgba(244,236,227,.78);margin:1.6rem auto 2.6rem;max-width:42ch}
 
@@ -340,10 +345,10 @@ a:hover>.frame img{transform:scale(1.05)}
 <div class="cursor" aria-hidden="true">ver</div>
 <header class="top solid">
   <a class="brand" href="index.html">Hapuck <span class="it">Scents</span></a>
-  <nav class="nav" aria-label="Principal"><a href="catalogo.html">Coleção</a><a href="catalogo.html?nota=lavanda">Buquês</a><a href="sobre.html">A marca</a><a href="index.html#contato">Contato</a></nav>
+  <nav class="nav" aria-label="Principal"><a href="catalogo.html">Coleção</a><a href="catalogo.html?cat=buques">Buquês</a><a href="sobre.html">A marca</a><a href="index.html#contato">Contato</a></nav>
   <button class="burger" aria-expanded="false" aria-controls="veil"><span data-t>Menu</span></button>
 </header>
-<nav class="veil" id="veil" aria-label="Navegação"><a href="catalogo.html">Coleção</a><a href="catalogo.html?nota=lavanda">Buquês</a><a href="sobre.html">A marca</a><a href="index.html#contato">Contato</a></nav>
+<nav class="veil" id="veil" aria-label="Navegação"><a href="catalogo.html">Coleção</a><a href="catalogo.html?cat=buques">Buquês</a><a href="sobre.html">A marca</a><a href="index.html#contato">Contato</a></nav>
 
 <main>
 <section class="page-hero env"><span class="eyebrow">A marca</span>
@@ -352,7 +357,7 @@ a:hover>.frame img{transform:scale(1.05)}
 <section class="env" style="padding-bottom:clamp(4rem,9vw,8rem)"><div class="editorial">
   <div class="epair rev"><div class="etxt"><h2>O começo</h2>
     <p>Começou pequeno, como quase tudo que dura: uma panela de base glicerinada, essência em quantidade mínima e a primeira rosa saindo torta do molde. A décima virou presente de aniversário de uma amiga — e ela guardou a caixa vazia por dois anos, só pelo cheiro.</p>
-    <p>Foi ali que a marca entendeu o que vendia. Não é sabonete. É a chance de alguém abrir uma gaveta anos depois e voltar para uma tarde específica.</p></div>
+    <p>Foi ali que a marca entendeu o que vendia. Não é vela. É a chance de alguém abrir uma gaveta anos depois e voltar para uma tarde específica.</p></div>
     <figure class="frame"><img src="assets/img/sobre-atelie.webp" alt="Ateliê: mãos moldando a flor" loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Ateliê: mãos moldando a flor</figcaption></figure></div>
   <div class="epair rev"><div class="etxt"><h2>Como é feito</h2>
     <p>Cada flor é moldada, desenformada, pintada e perfumada uma a uma. A montagem do buquê é a parte mais lenta: escolher qual rosa vai no centro, onde entra a lavanda seca, como o tule cai sem esconder a flor.</p>
@@ -363,7 +368,36 @@ a:hover>.frame img{transform:scale(1.05)}
     <p>E não temos carrinho. Presente se conversa: você diz para quem é, a gente pergunta o que essa pessoa gosta, e chega junto na escolha. É mais devagar. É melhor.</p></div>
     <figure class="frame"><img src="assets/img/sobre-produtos.webp" alt="As três linhas juntas" loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">As três linhas juntas</figcaption></figure></div>
 </div></section>
-<section class="sec cta"><div class="env"><span class="eyebrow" style="color:rgba(244,236,227,.6)">Um cheiro em mente?</span>
+<section class="sec cta"><svg class="cta__wreath" viewBox="0 0 600 600" aria-hidden="true">
+  <defs>
+    <g id="ctaSprig" fill="none" stroke="#F4ECE3" stroke-width="1.1" stroke-linecap="round">
+      <path d="M0 0 L0 -68"/>
+      <path d="M0 -24 C-12 -31 -18 -42 -14 -53"/>
+      <path d="M0 -24 C12 -31 18 -42 14 -53"/>
+      <path d="M0 -47 C-9 -52 -13 -60 -10 -68"/>
+      <path d="M0 -47 C9 -52 13 -60 10 -68"/>
+      <circle cx="0" cy="-70" r="5"/>
+    </g>
+  </defs>
+  <g opacity=".11">
+    <use href="#ctaSprig" transform="translate(300,300) rotate(0) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(36) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(72) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(108) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(144) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(180) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(216) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(252) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(288) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(324) translate(0,-232)"/>
+  </g>
+  <g fill="#EAC9A8" opacity=".15">
+    <circle cx="300" cy="66" r="3"/>
+    <circle transform="rotate(90 300 300)" cx="300" cy="66" r="3"/>
+    <circle transform="rotate(180 300 300)" cx="300" cy="66" r="3"/>
+    <circle transform="rotate(270 300 300)" cx="300" cy="66" r="3"/>
+  </g>
+</svg><div class="env"><span class="eyebrow" style="color:rgba(244,236,227,.6)">Um cheiro em mente?</span>
   <h2 class="rev" style="margin-top:1.2rem">Descreve pra gente. Costuma <span class="it">dar certo</span>.</h2>
   <p class="rev d1">Aromas personalizados e pedidos em quantidade para casamento, chá de bebê e brinde de empresa.</p>
   <a class="wa wa--light rev d2" href="https://wa.me/5541999999999?text=Ol%C3%A1%21%20Queria%20conversar%20sobre%20um%20pedido%20personalizado%20da%20Hapuck%20Scents." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5l1.4-4.1A8 8 0 1 1 8 19.2l-4.5 1.3Z"/><path d="M9 9.6c.6 2.6 2.5 4.5 5 5.1"/></svg><span>Conversar sobre um pedido</span></a></div></section>
@@ -373,8 +407,8 @@ a:hover>.frame img{transform:scale(1.05)}
     <div><p class="foot__brand">Hapuck <span class="it">Scents</span></p><p class="eyebrow" style="margin-top:1.2rem">Aromas que viram memória</p></div>
     <div><p class="eyebrow">Coleção</p><ul>
       <li><a href="catalogo.html">Difusores, sprays &amp; velas</a></li>
-      <li><a href="catalogo.html?nota=floral">Perfumes de corpo</a></li>
-      <li><a href="catalogo.html?nota=lavanda">Buquês de flor de sabonete</a></li></ul></div>
+      <li><a href="catalogo.html?cat=perfumes">Perfumes de corpo</a></li>
+      <li><a href="catalogo.html?cat=buques">Buquês de vela</a></li></ul></div>
     <div><p class="eyebrow">Onde nos achar</p><ul>
       <li><a href="https://instagram.com/hapuck_scents" target="_blank" rel="noopener">Instagram @hapuck_scents</a></li>
       <li><a href="https://wa.me/5541999999999?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Hapuck%20Scents." target="_blank" rel="noopener">WhatsApp</a></li>
@@ -395,7 +429,11 @@ var t=false;addEventListener("scroll",function(){if(t)return;t=true;requestAnima
 if("IntersectionObserver"in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}})},{rootMargin:"0px 0px -12% 0px",threshold:.14});document.querySelectorAll(".rev,.sechead,.frame,.ritual .item").forEach(function(el){io.observe(el);});}else document.querySelectorAll(".rev,.frame").forEach(function(el){el.classList.add("in");});
 var cur=document.querySelector(".cursor");if(cur&&matchMedia("(hover:hover)").matches&&!calm){addEventListener("mousemove",function(e){cur.style.transform="translate("+e.clientX+"px,"+e.clientY+"px) scale("+(cur.classList.contains("on")?1:0)+")";});document.querySelectorAll("[data-cur]").forEach(function(el){el.addEventListener("mouseenter",function(){cur.textContent=el.dataset.cur;cur.classList.add("on");});el.addEventListener("mouseleave",function(){cur.classList.remove("on");});});}
 var bg=document.querySelector(".burger"),vl=document.querySelector(".veil");if(bg&&vl){bg.addEventListener("click",function(){var o=vl.classList.toggle("open");bg.setAttribute("aria-expanded",o);bg.querySelector("[data-t]").textContent=o?"Fechar":"Menu";document.body.style.overflow=o?"hidden":"";});vl.addEventListener("click",function(e){if(e.target.tagName==="A")bg.click();});}
-var fs=document.querySelectorAll(".filter");if(fs.length){fs.forEach(function(b){b.addEventListener("click",function(){var n=b.dataset.nota;fs.forEach(function(o){o.setAttribute("aria-pressed",o===b);});document.querySelectorAll(".card").forEach(function(p){p.hidden=!(n==="tudo"||(p.dataset.notas||"").split(" ").indexOf(n)>-1);});});});var q=new URLSearchParams(location.search).get("nota");if(q){var a=document.querySelector('.filter[data-nota="'+q+'"]');if(a)a.click();}}
+var fs=document.querySelectorAll(".filter");if(fs.length){fs.forEach(function(b){b.addEventListener("click",function(){var n=b.dataset.cat;fs.forEach(function(o){o.setAttribute("aria-pressed",o===b);});document.querySelectorAll(".card").forEach(function(p){
+          var show=n==="tudo"||(p.dataset.cat||"").split(" ").indexOf(n)>-1;
+          if(!show){p.classList.add("hide");setTimeout(function(){p.hidden=true;},550);}
+          else{p.hidden=false;p.offsetHeight;setTimeout(function(){p.classList.remove("hide");},30);}
+        });});});var q=new URLSearchParams(location.search).get("cat");if(q){var a=document.querySelector('.filter[data-cat="'+q+'"]');if(a)a.click();}}
 })();
 </script>
 </body></html>

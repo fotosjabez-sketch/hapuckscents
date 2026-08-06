@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hapuck Scents — aromas que viram memória</title>
-<meta name="description" content="Aromaterapia e presentes olfativos feitos à mão. Difusores, perfumes de corpo e buquês de flor de sabonete. Vitrine da Hapuck Scents — pedidos pelo WhatsApp.">
+<meta name="description" content="Aromaterapia e presentes olfativos feitos à mão. Difusores, perfumes de corpo e buquês de vela. Vitrine da Hapuck Scents — pedidos pelo WhatsApp.">
 <meta name="theme-color" content="#F3E9E1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Hapuck Scents — aromas que viram memória">
@@ -214,6 +214,11 @@ a:hover>.frame img{transform:scale(1.05)}
 
 /* ---- CTA final -------------------------------------------------------- */
 .cta{background:var(--bordo);color:var(--marfim);text-align:center}
+.cta{position:relative;overflow:hidden}
+.cta__wreath{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:min(78vw,900px);height:auto;pointer-events:none;z-index:0}
+.cta .env{position:relative;z-index:1}
+
 .cta h2{font-size:clamp(2.4rem,6vw,5rem);max-width:16ch;margin-inline:auto}
 .cta p{color:rgba(244,236,227,.78);margin:1.6rem auto 2.6rem;max-width:42ch}
 
@@ -313,7 +318,7 @@ a:hover>.frame img{transform:scale(1.05)}
   <a class="brand" href="index.html">Hapuck <span class="it">Scents</span></a>
   <nav class="nav" aria-label="Principal">
     <a href="catalogo.html">Coleção</a>
-    <a href="catalogo.html?nota=lavanda">Buquês</a>
+    <a href="catalogo.html?cat=buques">Buquês</a>
     <a href="sobre.html">A marca</a>
     <a href="#contato">Contato</a>
   </nav>
@@ -321,7 +326,7 @@ a:hover>.frame img{transform:scale(1.05)}
 </header>
 <nav class="veil" id="veil" aria-label="Navegação">
   <a href="catalogo.html">Coleção</a>
-  <a href="catalogo.html?nota=lavanda">Buquês</a>
+  <a href="catalogo.html?cat=buques">Buquês</a>
   <a href="sobre.html">A marca</a>
   <a href="#contato">Contato</a>
 </nav>
@@ -372,7 +377,7 @@ a:hover>.frame img{transform:scale(1.05)}
 
 <!-- ============ COLEÇÕES ============ -->
 <section class="sec env" id="colecoes">
-  <div class="sechead"><span class="eyebrow">A coleção</span><span class="rule"></span></div>
+  <div class="sechead"><span class="eyebrow">Nosso Catálogo</span><span class="rule"></span></div>
   <div class="collections">
 
     <article class="blk blk--a rev">
@@ -394,9 +399,9 @@ a:hover>.frame img{transform:scale(1.05)}
         <span class="num">02 — Para a pele</span>
         <h3>Perfumes <span class="it">de corpo</span></h3>
         <p>Fixação longa, abertura curta. Sobem com o calor do corpo e mudam ao longo do dia — nunca cheiram igual em duas pessoas.</p>
-        <a class="arrow" href="catalogo.html?nota=floral">Ver a linha <svg viewBox="0 0 30 8" fill="none" stroke="currentColor" stroke-width=".9"><path d="M0 4h28"/><path d="M24 1l4 3-4 3"/></svg></a>
+        <a class="arrow" href="catalogo.html?cat=perfumes">Ver a linha <svg viewBox="0 0 30 8" fill="none" stroke="currentColor" stroke-width=".9"><path d="M0 4h28"/><path d="M24 1l4 3-4 3"/></svg></a>
       </div>
-      <a href="catalogo.html?nota=floral" data-cur="ver">
+      <a href="catalogo.html?cat=perfumes" data-cur="ver">
         <figure class="frame"><img src="assets/img/col-perfumes.webp" alt="Frasco de perfume de corpo Hapuck em ângulo" loading="lazy">
           <figcaption class="cap">Still-life · perfume de corpo em ângulo</figcaption></figure>
       </a>
@@ -405,13 +410,13 @@ a:hover>.frame img{transform:scale(1.05)}
     <article class="blk blk--c rev">
       <div class="txt">
         <span class="num">03 — Para presentear</span>
-        <h3>Buquês de <span class="it">flor de sabonete</span></h3>
-        <p>Rosas e dálias esculpidas à mão em sabonete perfumado, montadas em caixa cilíndrica com o monograma dourado e envoltas em tule. Não murcham, não pedem água.</p>
-        <a class="arrow" href="catalogo.html?nota=lavanda">Ver a linha <svg viewBox="0 0 30 8" fill="none" stroke="currentColor" stroke-width=".9"><path d="M0 4h28"/><path d="M24 1l4 3-4 3"/></svg></a>
+        <h3>Buquês de <span class="it">vela</span></h3>
+        <p>Rosas e dálias esculpidas à mão em vela perfumada, montadas em caixa cilíndrica com o monograma dourado e envoltas em tule. Não murcham, não pedem água.</p>
+        <a class="arrow" href="catalogo.html?cat=buques">Ver a linha <svg viewBox="0 0 30 8" fill="none" stroke="currentColor" stroke-width=".9"><path d="M0 4h28"/><path d="M24 1l4 3-4 3"/></svg></a>
       </div>
       <div class="pair">
-        <a href="catalogo.html" data-cur="ver"><figure class="frame"><img src="assets/img/col-buque-claro.webp" alt="Buquê de flores de sabonete em tons creme e pêssego com tule branco" loading="lazy"><figcaption class="cap">Buquê claro (creme/pêssego)</figcaption></figure></a>
-        <a href="catalogo.html?nota=lavanda" data-cur="ver"><figure class="frame shift"><img src="assets/img/col-buque-lavanda.webp" alt="Buquê de flores de sabonete em lavanda sobre caixa preta com monograma dourado" loading="lazy"><figcaption class="cap">Buquê lavanda (caixa preta)</figcaption></figure></a>
+        <a href="catalogo.html" data-cur="ver"><figure class="frame"><img src="assets/img/col-buque-claro.webp" alt="Buquê de velas em tons creme e pêssego com tule branco" loading="lazy"><figcaption class="cap">Buquê claro (creme/pêssego)</figcaption></figure></a>
+        <a href="catalogo.html?cat=buques" data-cur="ver"><figure class="frame shift"><img src="assets/img/col-buque-lavanda.webp" alt="Buquê de velas em lavanda sobre caixa preta com monograma dourado" loading="lazy"><figcaption class="cap">Buquê lavanda (caixa preta)</figcaption></figure></a>
       </div>
     </article>
 
@@ -430,7 +435,7 @@ a:hover>.frame img{transform:scale(1.05)}
       <div class="item rev d1"><svg class="ic" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M30 8s-11 13-11 21a11 11 0 0 0 22 0c0-8-11-21-11-21Z"/><path d="M24 30c0 4 2 7 6 8"/></svg>
         <div><h3>Dura o dia inteiro</h3><p>Difusores de até 60 dias, perfumes com 6 a 8 horas de fixação e buquês que perfumam por meses.</p></div></div>
       <div class="item rev d2"><svg class="ic" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M14 46C14 26 28 14 48 14c0 20-12 34-32 32Z"/><path d="M20 46c6-10 14-18 24-22"/></svg>
-        <div><h3>Ingredientes conscientes</h3><p>Cera vegetal, essências sem crueldade animal e sabonete de base glicerinada. Nada testado em bichos.</p></div></div>
+        <div><h3>Ingredientes conscientes</h3><p>Cera vegetal, essências sem crueldade animal e vela de base glicerinada. Nada testado em bichos.</p></div></div>
       <div class="item rev d3"><svg class="ic" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><circle cx="30" cy="26" r="7"/><path d="M30 19c6-8 16-5 16 3s-10 12-16 4Z"/><path d="M30 19c-6-8-16-5-16 3s10 12 16 4Z"/><path d="M30 33v19"/></svg>
         <div><h3>Peça única</h3><p>Cada flor é esculpida e pintada à mão. Duas caixas nunca saem exatamente iguais — e é isso que faz sentido.</p></div></div>
     </div>
@@ -439,6 +444,36 @@ a:hover>.frame img{transform:scale(1.05)}
 
 <!-- ============ CTA ============ -->
 <section class="sec cta" id="contato">
+  <svg class="cta__wreath" viewBox="0 0 600 600" aria-hidden="true">
+  <defs>
+    <g id="ctaSprig" fill="none" stroke="#F4ECE3" stroke-width="1.1" stroke-linecap="round">
+      <path d="M0 0 L0 -68"/>
+      <path d="M0 -24 C-12 -31 -18 -42 -14 -53"/>
+      <path d="M0 -24 C12 -31 18 -42 14 -53"/>
+      <path d="M0 -47 C-9 -52 -13 -60 -10 -68"/>
+      <path d="M0 -47 C9 -52 13 -60 10 -68"/>
+      <circle cx="0" cy="-70" r="5"/>
+    </g>
+  </defs>
+  <g opacity=".11">
+    <use href="#ctaSprig" transform="translate(300,300) rotate(0) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(36) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(72) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(108) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(144) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(180) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(216) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(252) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(288) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(324) translate(0,-232)"/>
+  </g>
+  <g fill="#EAC9A8" opacity=".15">
+    <circle cx="300" cy="66" r="3"/>
+    <circle transform="rotate(90 300 300)" cx="300" cy="66" r="3"/>
+    <circle transform="rotate(180 300 300)" cx="300" cy="66" r="3"/>
+    <circle transform="rotate(270 300 300)" cx="300" cy="66" r="3"/>
+  </g>
+</svg>
   <div class="env">
     <span class="eyebrow" style="color:rgba(244,236,227,.6)">Pedidos</span>
     <h2 class="rev" style="margin-top:1.2rem">Escolha o aroma. O resto a gente resolve na <span class="it">conversa</span>.</h2>
@@ -461,8 +496,8 @@ a:hover>.frame img{transform:scale(1.05)}
         <p class="eyebrow">Coleção</p>
         <ul>
           <li><a href="catalogo.html">Difusores, sprays &amp; velas</a></li>
-          <li><a href="catalogo.html?nota=floral">Perfumes de corpo</a></li>
-          <li><a href="catalogo.html?nota=lavanda">Buquês de flor de sabonete</a></li>
+          <li><a href="catalogo.html?cat=perfumes">Perfumes de corpo</a></li>
+          <li><a href="catalogo.html?cat=buques">Buquês de vela</a></li>
         </ul>
       </div>
       <div>

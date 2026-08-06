@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Coleção — Hapuck Scents</title>
-<meta name="description" content="Todos os difusores, home sprays, velas, perfumes de corpo e buquês de flor de sabonete da Hapuck Scents, filtráveis por nota.">
+<meta name="description" content="Todos os difusores, home sprays, velas, perfumes de corpo e buquês de vela da Hapuck Scents, filtráveis por nota.">
 <meta name="theme-color" content="#F3E9E1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -208,6 +208,11 @@ a:hover>.frame img{transform:scale(1.05)}
 
 /* ---- CTA final -------------------------------------------------------- */
 .cta{background:var(--bordo);color:var(--marfim);text-align:center}
+.cta{position:relative;overflow:hidden}
+.cta__wreath{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:min(78vw,900px);height:auto;pointer-events:none;z-index:0}
+.cta .env{position:relative;z-index:1}
+
 .cta h2{font-size:clamp(2.4rem,6vw,5rem);max-width:16ch;margin-inline:auto}
 .cta p{color:rgba(244,236,227,.78);margin:1.6rem auto 2.6rem;max-width:42ch}
 
@@ -340,81 +345,215 @@ a:hover>.frame img{transform:scale(1.05)}
 <div class="cursor" aria-hidden="true">ver</div>
 <header class="top solid">
   <a class="brand" href="index.html">Hapuck <span class="it">Scents</span></a>
-  <nav class="nav" aria-label="Principal"><a href="catalogo.html">Coleção</a><a href="catalogo.html?nota=lavanda">Buquês</a><a href="sobre.html">A marca</a><a href="index.html#contato">Contato</a></nav>
+  <nav class="nav" aria-label="Principal"><a href="catalogo.html">Coleção</a><a href="catalogo.html?cat=buques">Buquês</a><a href="sobre.html">A marca</a><a href="index.html#contato">Contato</a></nav>
   <button class="burger" aria-expanded="false" aria-controls="veil"><span data-t>Menu</span></button>
 </header>
-<nav class="veil" id="veil" aria-label="Navegação"><a href="catalogo.html">Coleção</a><a href="catalogo.html?nota=lavanda">Buquês</a><a href="sobre.html">A marca</a><a href="index.html#contato">Contato</a></nav>
+<nav class="veil" id="veil" aria-label="Navegação"><a href="catalogo.html">Coleção</a><a href="catalogo.html?cat=buques">Buquês</a><a href="sobre.html">A marca</a><a href="index.html#contato">Contato</a></nav>
 
 <main>
-<section class="page-hero env"><span class="eyebrow">A coleção inteira</span>
-  <h1>Filtre por <span class="it">nota</span></h1>
-  <p class="lead">É assim que a gente pensa os aromas por aqui — não por categoria, por nota.</p></section>
+<section class="page-hero env"><span class="eyebrow">Nosso Catálogo</span>
+  <h1>Explore por <span class="it">categoria</span></h1>
+  <p class="lead">Navegue pela coleção — cada linha tem uma história.</p></section>
 <section class="env" style="padding-bottom:clamp(4.5rem,10vw,9rem)">
-  <div class="filters" role="group" aria-label="Filtrar por nota"><button class="filter" data-nota="tudo" aria-pressed="true">Toda a coleção</button><button class="filter" data-nota="floral" aria-pressed="false">Floral</button><button class="filter" data-nota="citrico" aria-pressed="false">Cítrico</button><button class="filter" data-nota="amadeirado" aria-pressed="false">Amadeirado</button><button class="filter" data-nota="lavanda" aria-pressed="false">Lavanda</button></div>
-  <div class="grid-cat"><article class="card rev" data-notas="floral citrico">
-  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Difusor%20Flor%20de%20Laranjeira" target="_blank" rel="noopener" data-cur="ver">
-    <figure class="frame"><img src="assets/img/difusor-flor-de-laranjeira.webp" alt="Difusor Flor de Laranjeira — Vidro âmbar, varetas de rattan e uma flor que só existe por poucas semanas no ano." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Difusor Flor de Laranjeira</figcaption><span class="veu"><span>A casa acorda em branco.</span></span></figure>
-    <div class="card__top"><h3>Difusor Flor de Laranjeira</h3><span class="card__m">250 ml</span></div>
-    <div class="card__b"><span class="price">R$ 89,00</span><span class="badge">Mais presenteado</span></div>
+  <div class="filters" role="group" aria-label="Filtrar por categoria"><button class="filter" data-cat="tudo" aria-pressed="true">Toda a coleção</button><button class="filter" data-cat="buques" aria-pressed="false">Buquês de Vela</button><button class="filter" data-cat="casa" aria-pressed="false">Para a Casa</button><button class="filter" data-cat="frutos" aria-pressed="false">Frutos do Espírito</button><button class="filter" data-cat="corpo" aria-pressed="false">Corpo &amp; Banho</button><button class="filter" data-cat="perfumes" aria-pressed="false">Perfumes</button><button class="filter" data-cat="personalizados" aria-pressed="false">Personalizados</button></div>
+  <div class="grid-cat"><article class="card rev" data-cat="buques">
+  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Buqu%C3%AA%20Claro%20%28Creme%20%26%20P%C3%AAssego%29" target="_blank" rel="noopener" data-cur="ver">
+    <figure class="frame"><img src="assets/img/col-buque-claro.webp" alt="Buquê de velas em tons creme e pêssego, rosas e dálias esculpidas à mão, envolto em tule." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Buquê Claro — Creme &amp; Pêssego</figcaption><span class="veu"><span>Não murcha. Não pede água.</span></span></figure>
+    <div class="card__top"><h3>Buquê Claro — Creme &amp; Pêssego</h3><span class="card__m">P · M · G</span></div>
+    <div class="card__b"><span class="price">A partir de R$ 159,90</span></div>
   </a>
 </article>
-<article class="card rev" data-notas="lavanda floral">
-  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Difusor%20Lavanda%20Proven%C3%A7al" target="_blank" rel="noopener" data-cur="ver">
-    <figure class="frame"><img src="assets/img/difusor-lavanda-provencal.webp" alt="Difusor Lavanda Provençal — A linha lavanda: mais grave, mais quieta, feita para o quarto." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Difusor Lavanda Provençal</figcaption><span class="veu"><span>Para o fim do dia.</span></span></figure>
-    <div class="card__top"><h3>Difusor Lavanda Provençal</h3><span class="card__m">250 ml</span></div>
-    <div class="card__b"><span class="price">R$ 89,00</span></div>
+<article class="card rev" data-cat="buques">
+  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Buqu%C3%AA%20Lavanda" target="_blank" rel="noopener" data-cur="ver">
+    <figure class="frame"><img src="assets/img/col-buque-lavanda.webp" alt="Buquê de velas em tom lavanda sobre caixa preta com monograma dourado." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Buquê Lavanda</figcaption><span class="veu"><span>O roxo pede uma caixa preta.</span></span></figure>
+    <div class="card__top"><h3>Buquê Lavanda</h3><span class="card__m">P · M · G</span></div>
+    <div class="card__b"><span class="price">A partir de R$ 159,90</span><span class="badge">Linha lavanda</span></div>
   </a>
 </article>
-<article class="card rev" data-notas="citrico floral">
-  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Home%20Spray%20Algod%C3%A3o%20%26%20N%C3%A9roli" target="_blank" rel="noopener" data-cur="ver">
-    <figure class="frame"><img src="assets/img/home-spray-algodao-neroli.webp" alt="Home Spray Algodão &amp; Néroli — Dois toques na cortina e o ambiente muda de humor." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Home Spray Algodão &amp; Néroli</figcaption><span class="veu"><span>Roupa de cama recém-trocada.</span></span></figure>
-    <div class="card__top"><h3>Home Spray Algodão & Néroli</h3><span class="card__m">200 ml</span></div>
-    <div class="card__b"><span class="price">R$ 69,00</span></div>
+<article class="card rev" data-cat="casa">
+  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Difusor%20de%20Aromas%20220ml" target="_blank" rel="noopener" data-cur="ver">
+    <figure class="frame"><img src="assets/img/col-difusores.webp" alt="Difusor de aromas em vidro âmbar com varetas de rattan, sobre bandeja de mármore." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Difusor de Aromas</figcaption><span class="veu"><span>Perfuma o ambiente de forma contínua e elegante.</span></span></figure>
+    <div class="card__top"><h3>Difusor de Aromas</h3><span class="card__m">220 ml · 14 fragrâncias</span></div>
+    <div class="card__b"><span class="price">R$ 75,00</span></div>
   </a>
 </article>
-<article class="card rev" data-notas="amadeirado">
-  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Vela%20Baunilha%20%26%20%C3%82mbar" target="_blank" rel="noopener" data-cur="ver">
-    <figure class="frame"><img src="assets/img/vela-baunilha-e-ambar.webp" alt="Vela Baunilha &amp; Âmbar — Cera vegetal, pavio de algodão, queima limpa e sem fuligem." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Vela Baunilha &amp; Âmbar</figcaption><span class="veu"><span>A luz também tem cheiro.</span></span></figure>
-    <div class="card__top"><h3>Vela Baunilha & Âmbar</h3><span class="card__m">180 g</span></div>
-    <div class="card__b"><span class="price">R$ 79,00</span></div>
+<article class="card rev" data-cat="casa">
+  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Perfume%20para%20Casa%20%2F%20Home%20Spray" target="_blank" rel="noopener" data-cur="ver">
+    <figure class="frame"><img src="assets/img/home-spray.webp" alt="Perfume para casa em spray, para borrifar em ambientes e tecidos." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Perfume para Casa / Home Spray</figcaption><span class="veu"><span>Poucas borrifadas e o ambiente muda de humor.</span></span></figure>
+    <div class="card__top"><h3>Perfume para Casa / Home Spray</h3><span class="card__m">220 ml · 14 fragrâncias</span></div>
+    <div class="card__b"><span class="price">Sob consulta</span></div>
   </a>
 </article>
-<article class="card rev" data-notas="floral amadeirado">
-  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Perfume%20de%20Corpo%20P%C3%AAssego%20%26%20Fava%20Tonka" target="_blank" rel="noopener" data-cur="ver">
-    <figure class="frame"><img src="assets/img/perfume-pessego-tonka.webp" alt="Perfume de Corpo Pêssego &amp; Fava Tonka — Pêssego maduro sem virar doce, apoiado em fava tonka." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Perfume de Corpo Pêssego &amp; Fava Tonka</figcaption><span class="veu"><span>Fica onde a pele é mais quente.</span></span></figure>
-    <div class="card__top"><h3>Perfume de Corpo Pêssego & Fava Tonka</h3><span class="card__m">100 ml</span></div>
-    <div class="card__b"><span class="price">R$ 119,00</span><span class="badge">Novo</span></div>
+<article class="card rev" data-cat="casa">
+  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20%C3%81gua%20Perfumada%20para%20Len%C3%A7ol" target="_blank" rel="noopener" data-cur="ver">
+    <figure class="frame"><img src="assets/img/agua-lencol.webp" alt="Água perfumada para lençóis, travesseiros, cortinas e tecidos." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Água Perfumada para Lençol</figcaption><span class="veu"><span>Roupa de cama recém-trocada, todos os dias.</span></span></figure>
+    <div class="card__top"><h3>Água Perfumada para Lençol</h3><span class="card__m">500 ml · 14 fragrâncias</span></div>
+    <div class="card__b"><span class="price">R$ 78,90</span></div>
   </a>
 </article>
-<article class="card rev" data-notas="floral">
-  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Perfume%20de%20Corpo%20Rosa%20Branca" target="_blank" rel="noopener" data-cur="ver">
-    <figure class="frame"><img src="assets/img/perfume-rosa-branca.webp" alt="Perfume de Corpo Rosa Branca — A rosa lavada de qualquer lembrança de sabonete antigo." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Perfume de Corpo Rosa Branca</figcaption><span class="veu"><span>Rosa sem nostalgia.</span></span></figure>
-    <div class="card__top"><h3>Perfume de Corpo Rosa Branca</h3><span class="card__m">100 ml</span></div>
-    <div class="card__b"><span class="price">R$ 119,00</span></div>
+<article class="card rev" data-cat="casa">
+  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Vela%20Arom%C3%A1tica%20Premium%20100g" target="_blank" rel="noopener" data-cur="ver">
+    <figure class="frame"><img src="assets/img/vela-100g.webp" alt="Vela aromática premium 100g, cera de alta qualidade." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Vela Aromática Premium</figcaption><span class="veu"><span>A luz também tem cheiro.</span></span></figure>
+    <div class="card__top"><h3>Vela Aromática Premium</h3><span class="card__m">100 g</span></div>
+    <div class="card__b"><span class="price">R$ 50,00</span></div>
   </a>
 </article>
-<article class="card rev" data-notas="floral">
-  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Buqu%C3%AA%20Aurora" target="_blank" rel="noopener" data-cur="ver">
-    <figure class="frame"><img src="assets/img/buque-aurora.webp" alt="Buquê Aurora — Rosas, dálias e peônias esculpidas à mão em sabonete perfumado." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Buquê Aurora</figcaption><span class="veu"><span>Não murcha. Não pede água.</span></span></figure>
-    <div class="card__top"><h3>Buquê Aurora</h3><span class="card__m">16 flores</span></div>
-    <div class="card__b"><span class="price">R$ 189,00</span><span class="badge">Peça única</span></div>
+<article class="card rev" data-cat="casa">
+  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Vela%20Arom%C3%A1tica%20Premium%20200g" target="_blank" rel="noopener" data-cur="ver">
+    <figure class="frame"><img src="assets/img/vela-200g.webp" alt="Vela aromática premium 200g, cera de alta qualidade." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Vela Aromática Premium</figcaption><span class="veu"><span>A luz também tem cheiro.</span></span></figure>
+    <div class="card__top"><h3>Vela Aromática Premium</h3><span class="card__m">200 g</span></div>
+    <div class="card__b"><span class="price">R$ 75,00</span></div>
   </a>
 </article>
-<article class="card rev" data-notas="lavanda floral">
-  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Buqu%C3%AA%20Vespertino" target="_blank" rel="noopener" data-cur="ver">
-    <figure class="frame"><img src="assets/img/buque-vespertino.webp" alt="Buquê Vespertino — A versão dramática: lavanda seca, roxo profundo e laço de cetim." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Buquê Vespertino</figcaption><span class="veu"><span>O roxo pede uma caixa preta.</span></span></figure>
-    <div class="card__top"><h3>Buquê Vespertino</h3><span class="card__m">18 flores</span></div>
-    <div class="card__b"><span class="price">R$ 209,00</span><span class="badge">Linha lavanda</span></div>
+<article class="card rev" data-cat="casa">
+  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Pastilhas%20Perfumadas" target="_blank" rel="noopener" data-cur="ver">
+    <figure class="frame"><img src="assets/img/pastilhas.webp" alt="Pastilhas perfumadas para gavetas, armários, closets e lavabos." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Pastilhas Perfumadas</figcaption><span class="veu"><span>Para o cheiro morar nos detalhes.</span></span></figure>
+    <div class="card__top"><h3>Pastilhas Perfumadas</h3><span class="card__m">Gesso ou cera aromática</span></div>
+    <div class="card__b"><span class="price">R$ 25,00</span></div>
   </a>
 </article>
-<article class="card rev" data-notas="floral citrico">
-  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Mini%20Buqu%C3%AA%20Confete" target="_blank" rel="noopener" data-cur="ver">
-    <figure class="frame"><img src="assets/img/mini-buque-confete.webp" alt="Mini Buquê Confete — A versão pequena, para lembrar sem precisar de motivo." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Mini Buquê Confete</figcaption><span class="veu"><span>Cabe na mão, resolve o dia de alguém.</span></span></figure>
-    <div class="card__top"><h3>Mini Buquê Confete</h3><span class="card__m">9 flores</span></div>
-    <div class="card__b"><span class="price">R$ 129,00</span></div>
+<article class="card rev" data-cat="frutos">
+  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Cole%C3%A7%C3%A3o%20Frutos%20do%20Esp%C3%ADrito" target="_blank" rel="noopener" data-cur="ver">
+    <figure class="frame"><img src="assets/img/frutos-do-espirito.webp" alt="Coleção Frutos do Espírito — Amor, Alegria, Paz, Longanimidade, Benignidade, Bondade, Fidelidade, Mansidão e Temperança." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Coleção Frutos do Espírito</figcaption><span class="veu"><span>Elegância, aconchego e fé.</span></span></figure>
+    <div class="card__top"><h3>Coleção Frutos do Espírito</h3><span class="card__m">9 fragrâncias · Gálatas 5:22-23</span></div>
+    <div class="card__b"><span class="price">R$ 50,00</span><span class="badge">Edição exclusiva</span></div>
+  </a>
+</article>
+<article class="card rev" data-cat="corpo">
+  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Sais%20de%20Banho%20250g" target="_blank" rel="noopener" data-cur="ver">
+    <figure class="frame"><img src="assets/img/sais-banho-250.webp" alt="Sais de banho perfumados para relaxamento." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Sais de Banho</figcaption><span class="veu"><span>Alivia as tensões do dia.</span></span></figure>
+    <div class="card__top"><h3>Sais de Banho</h3><span class="card__m">250 g</span></div>
+    <div class="card__b"><span class="price">R$ 35,00</span></div>
+  </a>
+</article>
+<article class="card rev" data-cat="corpo">
+  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Sais%20de%20Banho%20450g" target="_blank" rel="noopener" data-cur="ver">
+    <figure class="frame"><img src="assets/img/sais-banho-450.webp" alt="Sais de banho perfumados para relaxamento." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Sais de Banho</figcaption><span class="veu"><span>Alivia as tensões do dia.</span></span></figure>
+    <div class="card__top"><h3>Sais de Banho</h3><span class="card__m">450 g</span></div>
+    <div class="card__b"><span class="price">R$ 65,00</span></div>
+  </a>
+</article>
+<article class="card rev" data-cat="corpo">
+  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Vela%20de%20Massagem%20Premium" target="_blank" rel="noopener" data-cur="ver">
+    <figure class="frame"><img src="assets/img/vela-massagem.webp" alt="Vela de massagem que se transforma em óleo morno para hidratar a pele." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Vela de Massagem Premium</figcaption><span class="veu"><span>A cera vira óleo morno e sedoso.</span></span></figure>
+    <div class="card__top"><h3>Vela de Massagem Premium</h3><span class="card__m">200 g</span></div>
+    <div class="card__b"><span class="price">R$ 80,00</span></div>
+  </a>
+</article>
+<article class="card rev" data-cat="corpo">
+  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Sabonete%20Artesanal%20%28unidade%29" target="_blank" rel="noopener" data-cur="ver">
+    <figure class="frame"><img src="assets/img/sabonete-unidade.webp" alt="Sabonetes artesanais inspirados na saboaria francesa e italiana." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Sabonetes Artesanais</figcaption><span class="veu"><span>Tradição da saboaria francesa e italiana.</span></span></figure>
+    <div class="card__top"><h3>Sabonetes Artesanais</h3><span class="card__m">Redondo ou Quadrado</span></div>
+    <div class="card__b"><span class="price">R$ 16,00</span><span class="badge">Lançamento 30/07</span></div>
+  </a>
+</article>
+<article class="card rev" data-cat="corpo">
+  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Kit%20com%203%20Sabonetes" target="_blank" rel="noopener" data-cur="ver">
+    <figure class="frame"><img src="assets/img/sabonete-kit3.webp" alt="Kit com três sabonetes artesanais." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Kit com 3 Sabonetes</figcaption><span class="veu"><span>Tradição da saboaria francesa e italiana.</span></span></figure>
+    <div class="card__top"><h3>Kit com 3 Sabonetes</h3><span class="card__m">Redondo ou Quadrado</span></div>
+    <div class="card__b"><span class="price">R$ 45,00</span><span class="badge">Lançamento 30/07</span></div>
+  </a>
+</article>
+<article class="card rev" data-cat="corpo">
+  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Manteiga%20Corporal%20Eterna" target="_blank" rel="noopener" data-cur="ver">
+    <figure class="frame"><img src="assets/img/manteiga-eterna.webp" alt="Manteiga corporal com karité, murumuru, óleo de amêndoas, óleo de semente de uva e vitamina E." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Manteiga Corporal Eterna</figcaption><span class="veu"><span>Hidratação intensa, perfumação sofisticada.</span></span></figure>
+    <div class="card__top"><h3>Manteiga Corporal Eterna</h3><span class="card__m">250 g</span></div>
+    <div class="card__b"><span class="price">R$ 80,00</span><span class="badge">Disponível 25/07</span></div>
+  </a>
+</article>
+<article class="card rev" data-cat="corpo">
+  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Hidratante%20Corporal" target="_blank" rel="noopener" data-cur="ver">
+    <figure class="frame"><img src="assets/img/hidratante-corporal.webp" alt="Hidratante corporal com nutrição profunda e toque aveludado." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Hidratante Corporal</figcaption><span class="veu"><span>Toque aveludado, do banho até a noite.</span></span></figure>
+    <div class="card__top"><h3>Hidratante Corporal</h3><span class="card__m">250 g · Eterna, It Girl ou Sweet &amp; Flowers</span></div>
+    <div class="card__b"><span class="price">R$ 55,00</span></div>
+  </a>
+</article>
+<article class="card rev" data-cat="perfumes">
+  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Perfume%20Eterna%2050ml" target="_blank" rel="noopener" data-cur="ver">
+    <figure class="frame"><img src="assets/img/col-perfumes.webp" alt="Frasco do Perfume Eterna, floral ambarado, notas de bergamota, lavanda e baunilha." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Perfume Eterna</figcaption><span class="veu"><span>Elegante e marcante.</span></span></figure>
+    <div class="card__top"><h3>Perfume Eterna</h3><span class="card__m">50 ml · Floral Ambarada</span></div>
+    <div class="card__b"><span class="price">R$ 80,00</span></div>
+  </a>
+</article>
+<article class="card rev" data-cat="perfumes">
+  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Perfume%20Eterna%20100ml" target="_blank" rel="noopener" data-cur="ver">
+    <figure class="frame"><img src="assets/img/col-perfumes.webp" alt="Frasco do Perfume Eterna, floral ambarado, notas de bergamota, lavanda e baunilha." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Perfume Eterna</figcaption><span class="veu"><span>Elegante e marcante.</span></span></figure>
+    <div class="card__top"><h3>Perfume Eterna</h3><span class="card__m">100 ml · Floral Ambarada</span></div>
+    <div class="card__b"><span class="price">R$ 120,00</span><span class="badge">Mais vendido</span></div>
+  </a>
+</article>
+<article class="card rev" data-cat="perfumes">
+  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20It%20Girl%20%E2%80%94%20Iconic" target="_blank" rel="noopener" data-cur="ver">
+    <figure class="frame"><img src="assets/img/it-girl-iconic.webp" alt="Body splash Iconic, âmbar floral, inspiração olfativa Good Girl, acompanha necessaire exclusiva." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: It Girl — Iconic</figcaption><span class="veu"><span>Amêndoa, café, tuberosa e madeiras nobres.</span></span></figure>
+    <div class="card__top"><h3>It Girl — Iconic</h3><span class="card__m">120 ml + necessaire</span></div>
+    <div class="card__b"><span class="price">R$ 70,00</span></div>
+  </a>
+</article>
+<article class="card rev" data-cat="perfumes">
+  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20It%20Girl%20%E2%80%94%20Muse" target="_blank" rel="noopener" data-cur="ver">
+    <figure class="frame"><img src="assets/img/it-girl-muse.webp" alt="Body splash Muse, floral frutado gourmand, acompanha necessaire exclusiva." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: It Girl — Muse</figcaption><span class="veu"><span>Framboesa, chantilly e almíscar.</span></span></figure>
+    <div class="card__top"><h3>It Girl — Muse</h3><span class="card__m">120 ml + necessaire</span></div>
+    <div class="card__b"><span class="price">R$ 70,00</span></div>
+  </a>
+</article>
+<article class="card rev" data-cat="perfumes">
+  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20It%20Girl%20%E2%80%94%20Glow" target="_blank" rel="noopener" data-cur="ver">
+    <figure class="frame"><img src="assets/img/it-girl-glow.webp" alt="Body splash Glow, floral frutado, acompanha necessaire exclusiva." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: It Girl — Glow</figcaption><span class="veu"><span>Lichia, rosa turca e cashmeran.</span></span></figure>
+    <div class="card__top"><h3>It Girl — Glow</h3><span class="card__m">120 ml + necessaire</span></div>
+    <div class="card__b"><span class="price">R$ 70,00</span></div>
+  </a>
+</article>
+<article class="card rev" data-cat="perfumes">
+  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Sweet%20%26%20Flowers" target="_blank" rel="noopener" data-cur="ver">
+    <figure class="frame"><img src="assets/img/sweet-flowers.webp" alt="Body splash Sweet & Flowers, âmbar amadeirada gourmand." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Sweet &amp; Flowers</figcaption><span class="veu"><span>Um abraço em forma de fragrância.</span></span></figure>
+    <div class="card__top"><h3>Sweet &amp; Flowers</h3><span class="card__m">120 ml</span></div>
+    <div class="card__b"><span class="price">R$ 60,00</span></div>
+  </a>
+</article>
+<article class="card rev" data-cat="personalizados">
+  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Or%C3%A7amento%20%E2%80%94%20Kit%20Personalizado" target="_blank" rel="noopener" data-cur="ver">
+    <figure class="frame"><img src="assets/img/personalizados.webp" alt="Kits personalizados para ocasiões especiais, com fragrâncias exclusivas e embalagens sob medida." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Kits Personalizados</figcaption><span class="veu"><span>Cada ocasião merece um aroma só dela.</span></span></figure>
+    <div class="card__top"><h3>Kits Personalizados</h3><span class="card__m">Casamentos, aniversários, batizados e eventos</span></div>
+    <div class="card__b"><span class="price">Sob consulta</span></div>
+  </a>
+</article>
+<article class="card rev" data-cat="personalizados">
+  <a href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%3A%20Or%C3%A7amento%20%E2%80%94%20Fragr%C3%A2ncia%20para%20Marca%20%28B2B%29" target="_blank" rel="noopener" data-cur="ver">
+    <figure class="frame"><img src="assets/img/b2b-fragrancias.webp" alt="Desenvolvimento de identidade olfativa exclusiva para marcas e negócios." loading="lazy"><svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1"><path d="M60 112V26"/><path d="M60 92c-16 0-26-9-26-22 14 0 26 9 26 22Z"/><path d="M60 92c16 0 26-9 26-22-14 0-26 9-26 22Z"/><circle cx="60" cy="22" r="9"/></svg><figcaption class="cap">Foto: Identidade Olfativa para Marcas</figcaption><span class="veu"><span>Um cheiro que vira a assinatura da sua marca.</span></span></figure>
+    <div class="card__top"><h3>Identidade Olfativa para Marcas</h3><span class="card__m">Lojas, clínicas, hotéis e eventos (B2B)</span></div>
+    <div class="card__b"><span class="price">Sob consulta</span></div>
   </a>
 </article></div></section>
-<section class="sec cta"><div class="env"><span class="eyebrow" style="color:rgba(244,236,227,.6)">Não decidiu?</span>
+<section class="sec cta"><svg class="cta__wreath" viewBox="0 0 600 600" aria-hidden="true">
+  <defs>
+    <g id="ctaSprig" fill="none" stroke="#F4ECE3" stroke-width="1.1" stroke-linecap="round">
+      <path d="M0 0 L0 -68"/>
+      <path d="M0 -24 C-12 -31 -18 -42 -14 -53"/>
+      <path d="M0 -24 C12 -31 18 -42 14 -53"/>
+      <path d="M0 -47 C-9 -52 -13 -60 -10 -68"/>
+      <path d="M0 -47 C9 -52 13 -60 10 -68"/>
+      <circle cx="0" cy="-70" r="5"/>
+    </g>
+  </defs>
+  <g opacity=".11">
+    <use href="#ctaSprig" transform="translate(300,300) rotate(0) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(36) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(72) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(108) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(144) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(180) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(216) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(252) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(288) translate(0,-232)"/>
+    <use href="#ctaSprig" transform="translate(300,300) rotate(324) translate(0,-232)"/>
+  </g>
+  <g fill="#EAC9A8" opacity=".15">
+    <circle cx="300" cy="66" r="3"/>
+    <circle transform="rotate(90 300 300)" cx="300" cy="66" r="3"/>
+    <circle transform="rotate(180 300 300)" cx="300" cy="66" r="3"/>
+    <circle transform="rotate(270 300 300)" cx="300" cy="66" r="3"/>
+  </g>
+</svg><div class="env"><span class="eyebrow" style="color:rgba(244,236,227,.6)">Não decidiu?</span>
   <h2 class="rev" style="margin-top:1.2rem">Conta pra quem é. A gente <span class="it">sugere</span>.</h2>
   <p class="rev d1">Manda o perfil de quem vai receber e a ocasião — em minutos devolvemos duas ou três opções.</p>
   <a class="wa wa--light rev d2" href="https://wa.me/5541999999999?text=Ol%C3%A1%21%20Preciso%20de%20ajuda%20para%20escolher%20um%20presente%20da%20Hapuck%20Scents." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5l1.4-4.1A8 8 0 1 1 8 19.2l-4.5 1.3Z"/><path d="M9 9.6c.6 2.6 2.5 4.5 5 5.1"/></svg><span>Pedir uma sugestão</span></a></div></section>
@@ -424,8 +563,8 @@ a:hover>.frame img{transform:scale(1.05)}
     <div><p class="foot__brand">Hapuck <span class="it">Scents</span></p><p class="eyebrow" style="margin-top:1.2rem">Aromas que viram memória</p></div>
     <div><p class="eyebrow">Coleção</p><ul>
       <li><a href="catalogo.html">Difusores, sprays &amp; velas</a></li>
-      <li><a href="catalogo.html?nota=floral">Perfumes de corpo</a></li>
-      <li><a href="catalogo.html?nota=lavanda">Buquês de flor de sabonete</a></li></ul></div>
+      <li><a href="catalogo.html?cat=perfumes">Perfumes de corpo</a></li>
+      <li><a href="catalogo.html?cat=buques">Buquês de vela</a></li></ul></div>
     <div><p class="eyebrow">Onde nos achar</p><ul>
       <li><a href="https://instagram.com/hapuck_scents" target="_blank" rel="noopener">Instagram @hapuck_scents</a></li>
       <li><a href="https://wa.me/5541999999999?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Hapuck%20Scents." target="_blank" rel="noopener">WhatsApp</a></li>
@@ -446,7 +585,11 @@ var t=false;addEventListener("scroll",function(){if(t)return;t=true;requestAnima
 if("IntersectionObserver"in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}})},{rootMargin:"0px 0px -12% 0px",threshold:.14});document.querySelectorAll(".rev,.sechead,.frame,.ritual .item").forEach(function(el){io.observe(el);});}else document.querySelectorAll(".rev,.frame").forEach(function(el){el.classList.add("in");});
 var cur=document.querySelector(".cursor");if(cur&&matchMedia("(hover:hover)").matches&&!calm){addEventListener("mousemove",function(e){cur.style.transform="translate("+e.clientX+"px,"+e.clientY+"px) scale("+(cur.classList.contains("on")?1:0)+")";});document.querySelectorAll("[data-cur]").forEach(function(el){el.addEventListener("mouseenter",function(){cur.textContent=el.dataset.cur;cur.classList.add("on");});el.addEventListener("mouseleave",function(){cur.classList.remove("on");});});}
 var bg=document.querySelector(".burger"),vl=document.querySelector(".veil");if(bg&&vl){bg.addEventListener("click",function(){var o=vl.classList.toggle("open");bg.setAttribute("aria-expanded",o);bg.querySelector("[data-t]").textContent=o?"Fechar":"Menu";document.body.style.overflow=o?"hidden":"";});vl.addEventListener("click",function(e){if(e.target.tagName==="A")bg.click();});}
-var fs=document.querySelectorAll(".filter");if(fs.length){fs.forEach(function(b){b.addEventListener("click",function(){var n=b.dataset.nota;fs.forEach(function(o){o.setAttribute("aria-pressed",o===b);});document.querySelectorAll(".card").forEach(function(p){p.hidden=!(n==="tudo"||(p.dataset.notas||"").split(" ").indexOf(n)>-1);});});});var q=new URLSearchParams(location.search).get("nota");if(q){var a=document.querySelector('.filter[data-nota="'+q+'"]');if(a)a.click();}}
+var fs=document.querySelectorAll(".filter");if(fs.length){fs.forEach(function(b){b.addEventListener("click",function(){var n=b.dataset.cat;fs.forEach(function(o){o.setAttribute("aria-pressed",o===b);});document.querySelectorAll(".card").forEach(function(p){
+          var show=n==="tudo"||(p.dataset.cat||"").split(" ").indexOf(n)>-1;
+          if(!show){p.classList.add("hide");setTimeout(function(){p.hidden=true;},550);}
+          else{p.hidden=false;p.offsetHeight;setTimeout(function(){p.classList.remove("hide");},30);}
+        });});});var q=new URLSearchParams(location.search).get("cat");if(q){var a=document.querySelector('.filter[data-cat="'+q+'"]');if(a)a.click();}}
 })();
 </script>
 </body></html>
