@@ -12,6 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Jost:wght@300;400;500&display=swap">
+<script defer src="assets/js/cart.js"></script>
 <style>
 /* =========================================================================
    HAPUCK SCENTS — home editorial
@@ -226,12 +227,12 @@ a:hover>.frame img{transform:scale(1.05)}
 .wa{position:relative;overflow:hidden;isolation:isolate;display:inline-flex;align-items:center;
   gap:.8rem;padding:1.05rem 2rem;border:1px solid currentColor;font-size:.7rem;
   text-transform:uppercase;letter-spacing:.22em;transition:color .5s var(--ease)}
-.wa::before{content:"";position:absolute;inset:0;z-index:-1;background:currentColor;
+.wa::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--wa-fill);
   transform:translateY(101%);transition:transform .55s var(--ease)}
 .wa:hover::before{transform:translateY(0)}
 .wa svg{width:17px}
-.wa--light{color:var(--marfim)}.wa--light:hover{color:var(--bordo)}
-.wa--dark{color:var(--tinta)}.wa--dark:hover{color:var(--creme)}
+.wa--light{--wa-fill:var(--marfim);color:var(--marfim)}.wa--light:hover{color:var(--bordo)}
+.wa--dark{--wa-fill:var(--tinta);color:var(--tinta)}.wa--dark:hover{color:var(--creme)}
 
 .wafloat{position:fixed;right:clamp(1rem,3vw,2rem);bottom:clamp(1rem,3vw,2rem);z-index:70;
   display:inline-flex;align-items:center;gap:.7rem;padding:.9rem 1.3rem;background:var(--creme);
@@ -306,6 +307,106 @@ a:hover>.frame img{transform:scale(1.05)}
   .hero h1 .row span,.hero__eyebrow span{transform:none!important}
   .frame::after{display:none}.manifest .word{opacity:1!important}.intro{display:none}
 }
+
+/* =========================================================================
+   CARRINHO — botão no header, drawer lateral, ações de compra nos cards
+   ========================================================================= */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+.cartbtn{position:relative;display:inline-flex;align-items:center;justify-content:center;
+  width:2.1rem;height:2.1rem;z-index:65;transition:opacity .3s var(--ease)}
+.cartbtn svg{width:20px;height:20px}
+.cartbtn__count{position:absolute;top:-2px;right:-4px;min-width:16px;height:16px;padding:0 4px;
+  border-radius:999px;background:var(--bordo);color:var(--marfim);font-family:var(--sans);
+  font-size:.62rem;line-height:16px;text-align:center;letter-spacing:0}
+.cartbtn__count[hidden]{display:none}
+
+/* ---- ações de compra dentro do card do catálogo ---- */
+.card__link{display:block}
+.card__link:hover>.frame img{transform:scale(1.05)}
+.card__link:hover .veu{opacity:1}.card__link:hover .veu span{transform:none}
+.card__actions{display:flex;gap:.5rem;margin-top:.85rem}
+.card__add,.card__buy{flex:1;padding:.68rem .7rem;font-family:var(--sans);font-size:.62rem;
+  text-transform:uppercase;letter-spacing:.14em;text-align:center;border:1px solid var(--tinta);
+  transition:background .4s var(--ease),color .4s var(--ease),border-color .4s var(--ease);
+  white-space:nowrap}
+.card__add{background:transparent;color:var(--tinta)}
+.card__add:hover{background:var(--tinta);color:var(--creme)}
+.card__add.is-added{border-color:var(--oliva);color:var(--oliva)}
+.card__buy{background:var(--tinta);color:var(--creme)}
+.card__buy:hover{background:var(--bordo);border-color:var(--bordo)}
+.card__buy--wa{flex:1 0 100%}
+
+/* ---- overlay + drawer ---- */
+.cart-overlay{position:fixed;inset:0;z-index:90;background:rgba(23,19,16,.42);
+  backdrop-filter:blur(3px);opacity:0;visibility:hidden;transition:opacity .5s var(--ease),visibility 0s .5s}
+.cart-overlay.on{opacity:1;visibility:visible;transition:opacity .5s var(--ease)}
+
+.cart-drawer{position:fixed;top:0;right:0;bottom:0;z-index:91;width:min(440px,100vw);
+  background:var(--creme);box-shadow:-24px 0 60px rgba(23,19,16,.18);
+  display:flex;flex-direction:column;transform:translateX(101%);
+  transition:transform .55s var(--ease)}
+.cart-drawer.on{transform:none}
+
+.cart-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:1.4rem var(--mrg);border-bottom:1px solid rgba(43,36,32,.14)}
+.cart-head h2{font-family:var(--serif);font-weight:300;font-size:1.5rem}
+.cart-close{width:2.2rem;height:2.2rem;display:inline-flex;align-items:center;justify-content:center}
+.cart-close svg{width:18px;height:18px}
+
+.cart-body{flex:1;overflow-y:auto;padding:1.2rem var(--mrg)}
+.cart-empty{padding:2.5rem 0;text-align:center;color:var(--tinta-2)}
+.cart-empty p{font-family:var(--serif);font-style:italic;font-size:1.15rem;margin-bottom:.4rem}
+
+.cart-item{display:grid;grid-template-columns:74px 1fr;gap:1rem;padding:1.1rem 0;
+  border-bottom:1px solid rgba(43,36,32,.1)}
+.cart-item__img{width:74px;height:74px;object-fit:cover;background:var(--creme-2)}
+.cart-item__name{font-family:var(--serif);font-size:1rem;line-height:1.2;margin-bottom:.15rem}
+.cart-item__var{font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--tinta-2);
+  margin-bottom:.5rem}
+.cart-item__row{display:flex;align-items:center;justify-content:space-between;gap:.6rem;flex-wrap:wrap}
+.cart-item__price{font-size:.78rem}
+.cart-item__qty{display:inline-flex;align-items:center;border:1px solid rgba(43,36,32,.22)}
+.cart-item__qty button{width:1.9rem;height:1.9rem;font-size:.9rem;line-height:1}
+.cart-item__qty button:hover{background:rgba(43,36,32,.06)}
+.cart-item__qty span{min-width:1.8rem;text-align:center;font-size:.78rem}
+.cart-item__remove{font-size:.62rem;text-transform:uppercase;letter-spacing:.14em;
+  color:var(--tinta-2);text-decoration:underline;text-underline-offset:3px}
+.cart-item__remove:hover{color:var(--bordo)}
+.cart-item__sub{width:100%;display:flex;justify-content:flex-end;font-size:.72rem;
+  color:var(--tinta-2);margin-top:.3rem}
+
+.cart-pay{margin-top:.4rem;padding-top:1.2rem}
+.cart-pay p.eyebrow{margin-bottom:.7rem}
+.cart-pay__opts{display:flex;flex-wrap:wrap;gap:.5rem}
+.cart-pay__opts label{position:relative}
+.cart-pay__opts input{position:absolute;opacity:0;pointer-events:none}
+.cart-pay__opts span{display:inline-flex;padding:.5rem 1rem;border:1px solid rgba(43,36,32,.2);
+  border-radius:999px;font-size:.66rem;text-transform:uppercase;letter-spacing:.14em;
+  color:var(--tinta-2);transition:all .3s var(--ease);cursor:pointer}
+.cart-pay__opts input:checked+span{background:var(--tinta);border-color:var(--tinta);color:var(--creme)}
+.cart-pay__opts input:focus-visible+span{outline:1.5px solid var(--dourado);outline-offset:2px}
+
+.cart-foot{padding:1.2rem var(--mrg) 1.5rem;border-top:1px solid rgba(43,36,32,.14)}
+.cart-foot__sub{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1rem}
+.cart-foot__sub strong{font-family:var(--serif);font-size:1.35rem;font-weight:300}
+.cart-checkout{display:flex;align-items:center;justify-content:center;gap:.7rem;width:100%;
+  padding:1.05rem 1.4rem;background:var(--tinta);color:var(--creme);font-size:.7rem;
+  text-transform:uppercase;letter-spacing:.2em;transition:background .4s var(--ease)}
+.cart-checkout:hover{background:var(--bordo)}
+.cart-checkout svg{width:17px}
+.cart-checkout[disabled]{opacity:.4;pointer-events:none}
+.cart-clear{display:block;text-align:center;margin-top:.8rem;font-size:.64rem;
+  text-transform:uppercase;letter-spacing:.16em;color:var(--tinta-2);text-decoration:underline;
+  text-underline-offset:3px}
+.cart-clear:hover{color:var(--bordo)}
+
+@media(max-width:560px){
+  .cart-drawer{width:100vw}
+  .card__actions{flex-direction:column}
+}
+
 </style>
 </head>
 <body>
@@ -322,6 +423,7 @@ a:hover>.frame img{transform:scale(1.05)}
     <a href="sobre.html">A marca</a>
     <a href="#contato">Contato</a>
   </nav>
+  <button class="cartbtn" id="cartToggle" type="button" aria-haspopup="dialog" aria-controls="cartDrawer"><span class="sr-only">Abrir carrinho</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l1.6 10.6a2 2 0 0 0 2 1.7h8.8a2 2 0 0 0 2-1.6L21 8H6.2"/><circle cx="9.5" cy="20" r="1.1" fill="currentColor" stroke="none"/><circle cx="17.5" cy="20" r="1.1" fill="currentColor" stroke="none"/></svg><span class="cartbtn__count" id="cartCount" hidden>0</span></button>
   <button class="burger" aria-expanded="false" aria-controls="veil"><span data-t>Menu</span></button>
 </header>
 <nav class="veil" id="veil" aria-label="Navegação">
@@ -478,7 +580,7 @@ a:hover>.frame img{transform:scale(1.05)}
     <span class="eyebrow" style="color:rgba(244,236,227,.6)">Pedidos</span>
     <h2 class="rev" style="margin-top:1.2rem">Escolha o aroma. O resto a gente resolve na <span class="it">conversa</span>.</h2>
     <p class="rev d1">Sem carrinho, sem cadastro. Você manda o nome da peça no WhatsApp e a gente combina cor, embalagem e envio — para qualquer lugar do Brasil.</p>
-    <a class="wa wa--light rev d2" href="https://wa.me/5541999999999?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Hapuck%20Scents%20e%20quero%20conhecer%20a%20cole%C3%A7%C3%A3o." target="_blank" rel="noopener">
+    <a class="wa wa--light rev d2" href="https://wa.me/5541987961248?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Hapuck%20Scents%20e%20quero%20conhecer%20a%20cole%C3%A7%C3%A3o." target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5l1.4-4.1A8 8 0 1 1 8 19.2l-4.5 1.3Z"/><path d="M9 9.6c.6 2.6 2.5 4.5 5 5.1"/></svg>
       <span>Chamar no WhatsApp</span></a>
   </div>
@@ -504,7 +606,7 @@ a:hover>.frame img{transform:scale(1.05)}
         <p class="eyebrow">Onde nos achar</p>
         <ul>
           <li><a href="https://instagram.com/hapuck_scents" target="_blank" rel="noopener">Instagram @hapuck_scents</a></li>
-          <li><a href="https://wa.me/5541999999999" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="https://wa.me/5541987961248" target="_blank" rel="noopener">WhatsApp</a></li>
           <li><a href="sobre.html">A marca</a></li>
         </ul>
       </div>
@@ -516,9 +618,43 @@ a:hover>.frame img{transform:scale(1.05)}
   </div>
 </footer>
 
-<a class="wafloat" href="https://wa.me/5541999999999?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Hapuck%20Scents." target="_blank" rel="noopener">
+<a class="wafloat" href="https://wa.me/5541987961248?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Hapuck%20Scents." target="_blank" rel="noopener">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5l1.4-4.1A8 8 0 1 1 8 19.2l-4.5 1.3Z"/><path d="M9 9.6c.6 2.6 2.5 4.5 5 5.1"/></svg>
   <span>Chamar no WhatsApp</span></a>
+
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Carrinho de compras" aria-hidden="true">
+  <div class="cart-head">
+    <h2>Seu carrinho</h2>
+    <button type="button" class="cart-close" id="cartClose"><span class="sr-only">Fechar carrinho</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>
+    </button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    <div class="cart-empty" id="cartEmpty">
+      <p class="it">Seu carrinho está vazio.</p>
+      <p class="eyebrow">Explore a coleção e adicione uma peça.</p>
+    </div>
+    <div id="cartItems"></div>
+    <div class="cart-pay" id="cartPay" hidden>
+      <p class="eyebrow">Como deseja pagar?</p>
+      <div class="cart-pay__opts" id="cartPayOpts">
+        <label><input type="radio" name="pay" value="Pix" checked><span>Pix</span></label>
+        <label><input type="radio" name="pay" value="Cartão"><span>Cartão</span></label>
+        <label><input type="radio" name="pay" value="Dinheiro"><span>Dinheiro</span></label>
+        <label><input type="radio" name="pay" value="Ainda não decidi"><span>Ainda não decidi</span></label>
+      </div>
+    </div>
+  </div>
+  <div class="cart-foot" id="cartFoot" hidden>
+    <div class="cart-foot__sub"><span class="eyebrow">Subtotal</span><strong id="cartSubtotal">R$ 0,00</strong></div>
+    <button type="button" class="cart-checkout" id="cartCheckout">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5l1.4-4.1A8 8 0 1 1 8 19.2l-4.5 1.3Z"/><path d="M9 9.6c.6 2.6 2.5 4.5 5 5.1"/></svg>
+      <span>Finalizar pedido pelo WhatsApp</span>
+    </button>
+    <button type="button" class="cart-clear" id="cartClear">Esvaziar carrinho</button>
+  </div>
+</aside>
 
 <script>
 (function(){
