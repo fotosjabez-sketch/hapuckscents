@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Entrar · Painel Hapuck Scents</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=Jost:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="admin.css">
+<script defer src="../assets/js/vendor/supabase.js"></script>
+<script defer src="../assets/js/supabase-config.js"></script>
+</head>
+<body class="login-body">
+
+<main class="login">
+  <div class="login__card">
+    <div class="login__brand">
+      <span class="login__mark">HS</span>
+      <h1>Hapuck <span class="it">Scents</span></h1>
+      <p class="eyebrow">Painel administrativo</p>
+    </div>
+
+    <form id="loginForm" class="form" novalidate>
+      <div class="field">
+        <label for="user">E-mail</label>
+        <input type="email" id="user" name="user" autocomplete="username" required>
+      </div>
+      <div class="field">
+        <label for="pass">Senha</label>
+        <input type="password" id="pass" name="pass" autocomplete="current-password" required>
+      </div>
+
+      <p class="alert" id="loginError" hidden>Usuário ou senha incorretos.</p>
+
+      <button type="submit" class="btn btn--full">Entrar</button>
+    </form>
+
+    <p class="login__note">Área restrita. Este acesso é separado do site público.</p>
+  </div>
+</main>
+
+<script defer src="admin.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+(function(){
+  "use strict";
+  Admin.session().then(function(s){ if (s) location.replace("dashboard.html"); });
+
+  var form = document.getElementById("loginForm");
+  var err  = document.getElementById("loginError");
+  var btn  = form.querySelector("button[type=submit]");
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    err.hidden = true;
+    btn.disabled = true;
+    var txt = btn.textContent; btn.textContent = "Entrando…";
+
+    Admin.signIn(document.getElementById("user").value.trim(),
+                 document.getElementById("pass").value)
+      .then(function(r){
+        if (r.ok) { location.href = "dashboard.html"; return; }
+        err.textContent = r.msg; err.hidden = false;
+        document.getElementById("pass").value = "";
+        btn.disabled = false; btn.textContent = txt;
+      });
+  });
+})();
+});
+</script>
+</body>
+</html>

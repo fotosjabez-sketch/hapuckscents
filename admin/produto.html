@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Produto · Painel Hapuck Scents</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=Jost:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="admin.css">
+<script defer src="../assets/js/vendor/supabase.js"></script>
+<script defer src="../assets/js/supabase-config.js"></script>
+</head>
+<body>
+
+<button class="side__toggle" type="button" aria-label="Abrir menu">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+</button>
+<div class="side__scrim"></div>
+
+<div class="shell">
+  <aside class="side">
+    <div class="side__brand">
+      <span class="side__mark">HS</span>
+      <span><strong>Hapuck <span class="it">Scents</span></strong><span>Painel</span></span>
+    </div>
+    <nav class="side__nav">
+      <a href="dashboard.html" data-page="produtos">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4Z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+        Produtos
+      </a>
+      <a href="produto.html" data-page="novo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        Adicionar produto
+      </a>
+      <a href="../index.html" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+        Ver o site
+      </a>
+    </nav>
+    <div class="side__foot">
+      <span class="side__user" id="sideUser"></span>
+      <button class="side__out" id="logoutBtn" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h4"/><path d="M15 16l4-4-4-4"/><path d="M19 12H9"/></svg>
+        Sair
+      </button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1 id="pageTitle">Adicionar produto</h1>
+        <p id="pageSub">Preencha os dados e salve para incluir na vitrine.</p>
+      </div>
+      <a class="btn btn--ghost" href="dashboard.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>
+        Voltar
+      </a>
+    </div>
+
+    <form id="prodForm" novalidate>
+      <div class="editor">
+
+        <div class="card-box">
+          <h2>Informações</h2>
+          <div class="form">
+            <div class="field">
+              <label for="name">Nome do produto *</label>
+              <input type="text" id="name" required maxlength="90">
+            </div>
+
+            <div class="grid-2">
+              <div class="field">
+                <label for="cat">Categoria *</label>
+                <select id="cat" required></select>
+              </div>
+              <div class="field">
+                <label for="price">Preço (R$)</label>
+                <input type="number" id="price" min="0" step="0.01" placeholder="0,00">
+                <span class="field__hint">Deixe 0 para "Sob consulta".</span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="variation">Tamanho / variação</label>
+              <input type="text" id="variation" maxlength="80" placeholder="Ex.: 200 ml">
+            </div>
+
+            <div class="field">
+              <label for="desc">Descrição</label>
+              <textarea id="desc" maxlength="400" placeholder="Uma ou duas frases sobre o produto."></textarea>
+            </div>
+
+            <div class="field">
+              <label>Status de publicação</label>
+              <label class="switch">
+                <input type="checkbox" id="active" checked>
+                <span class="switch__track"></span>
+                <span class="switch__label" id="activeLabel">Publicado na vitrine</span>
+              </label>
+            </div>
+
+            <p class="alert" id="formError" hidden></p>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn">Salvar produto</button>
+            <a class="btn btn--ghost" href="dashboard.html">Cancelar</a>
+          </div>
+        </div>
+
+        <div class="card-box">
+          <h2>Imagem</h2>
+          <div class="drop" id="drop">
+            <div class="drop__ph" id="dropPh">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 15l5-5 4 4 3-3 6 6"/><circle cx="8.5" cy="8.5" r="1.5"/></svg>
+              <span>Clique para escolher<br>ou arraste uma imagem aqui</span>
+            </div>
+            <img id="preview" alt="" hidden>
+          </div>
+          <input type="file" id="file" accept="image/*" hidden>
+          <div class="preview-acts">
+            <button type="button" class="btn btn--ghost" id="pickBtn">Escolher imagem</button>
+            <button type="button" class="btn btn--ghost" id="clearImg" hidden>Remover</button>
+          </div>
+          <p class="field__hint" style="margin-top:.7rem">
+            Use fotos verticais (proporção 4:5) para ficarem iguais às da vitrine.
+            Prefira arquivos abaixo de 1 MB.
+          </p>
+        </div>
+
+      </div>
+    </form>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script defer src="admin.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+(function(){
+  "use strict";
+  var params = new URLSearchParams(location.search);
+  var editId = params.get("id");
+  Admin.initShell(editId ? "produtos" : "novo");
+
+  var current = null;
+  var arquivoSelecionado = null;   // foto nova ainda não enviada
+
+  var $name = document.getElementById("name");
+  var $cat  = document.getElementById("cat");
+  var $price= document.getElementById("price");
+  var $var  = document.getElementById("variation");
+  var $desc = document.getElementById("desc");
+  var $act  = document.getElementById("active");
+  var $actL = document.getElementById("activeLabel");
+  var $err  = document.getElementById("formError");
+  var $prev = document.getElementById("preview");
+  var $ph   = document.getElementById("dropPh");
+  var $drop = document.getElementById("drop");
+  var $file = document.getElementById("file");
+  var $clear= document.getElementById("clearImg");
+
+  var imgData = "";
+
+  // categorias
+  $cat.innerHTML = '<option value="">Selecione…</option>' + Admin.CATEGORIES.map(function(c){
+    return '<option value="'+c.id+'">'+Admin.escapeHtml(c.label)+'</option>';
+  }).join("");
+
+  $prev.addEventListener("error", function(){
+    // caminho salvo não existe mais: volta ao placeholder sem quebrar a tela
+    $prev.hidden = true; $ph.hidden = false;
+  });
+
+  function showImage(src){
+    imgData = src || "";
+    if (imgData) {
+      $prev.src = imgData; $prev.hidden = false; $ph.hidden = true; $clear.hidden = false;
+    } else {
+      $prev.removeAttribute("src"); $prev.hidden = true; $ph.hidden = false; $clear.hidden = true;
+    }
+  }
+
+  // guarda de acesso + carregamento do produto em edição
+  Admin.requireAuth().then(function(ok){
+    if (!ok || !editId) return;
+    return Admin.get(editId).then(function(p){
+      if (!p) { location.replace("dashboard.html"); return; }
+      current = p;
+      document.getElementById("pageTitle").textContent = "Editar produto";
+      document.getElementById("pageSub").textContent = p.nome;
+      $name.value  = p.nome || "";
+      $cat.value   = p.categoria || "";
+      $price.value = Number(p.preco) > 0 ? p.preco : "";
+      $var.value   = p.variacao || "";
+      $desc.value  = p.descricao || "";
+      $act.checked = !!p.ativo;
+      showImage(p.imagem || "");
+      syncLabel();
+    });
+  }).catch(function(){
+    $err.textContent = "Não foi possível carregar o produto.";
+    $err.hidden = false;
+  });
+
+  function syncLabel(){
+    $actL.textContent = $act.checked ? "Publicado na vitrine" : "Oculto (não aparece no site)";
+  }
+  $act.addEventListener("change", syncLabel);
+  syncLabel();
+
+  // escolher / arrastar imagem
+  document.getElementById("pickBtn").addEventListener("click", function(){ $file.click(); });
+  $drop.addEventListener("click", function(){ $file.click(); });
+  $clear.addEventListener("click", function(e){ e.stopPropagation(); arquivoSelecionado = null; showImage(""); });
+
+  function readFile(f){
+    if (!f || !/^image\//.test(f.type)) { Admin.toast("Escolha um arquivo de imagem."); return; }
+    if (f.size > 2 * 1024 * 1024) { Admin.toast("Imagem muito grande. Use até 2 MB."); return; }
+    arquivoSelecionado = f;
+    var r = new FileReader();
+    r.onload = function(){ showImage(r.result); };   // pré-visualização local
+    r.readAsDataURL(f);
+  }
+
+  $file.addEventListener("change", function(){ readFile(this.files[0]); this.value = ""; });
+
+  ["dragenter","dragover"].forEach(function(ev){
+    $drop.addEventListener(ev, function(e){ e.preventDefault(); $drop.classList.add("is-over"); });
+  });
+  ["dragleave","drop"].forEach(function(ev){
+    $drop.addEventListener(ev, function(e){ e.preventDefault(); $drop.classList.remove("is-over"); });
+  });
+  $drop.addEventListener("drop", function(e){
+    if (e.dataTransfer && e.dataTransfer.files) readFile(e.dataTransfer.files[0]);
+  });
+
+  // salvar
+  document.getElementById("prodForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    $err.hidden = true;
+
+    var name = $name.value.trim();
+    if (!name)      { $err.textContent = "Informe o nome do produto."; $err.hidden = false; $name.focus(); return; }
+    if (!$cat.value){ $err.textContent = "Escolha uma categoria.";     $err.hidden = false; $cat.focus();  return; }
+
+    var btn = this.querySelector("button[type=submit]");
+    var txt = btn.textContent;
+    btn.disabled = true; btn.textContent = "Salvando…";
+
+    // 1) se houver foto nova, envia ao Storage; 2) depois grava o produto
+    var etapaImagem = arquivoSelecionado
+      ? (btn.textContent = "Enviando foto…", Admin.uploadImage(arquivoSelecionado))
+      : Promise.resolve(imgData && imgData.indexOf("data:") === 0 ? "" : imgData);
+
+    etapaImagem.then(function(url){
+      btn.textContent = "Salvando…";
+      return Admin.save({
+        id: current ? current.id : null,
+        nome: name,
+        categoria: $cat.value,
+        preco: parseFloat($price.value) || 0,
+        variacao: $var.value.trim(),
+        descricao: $desc.value.trim(),
+        imagem: url || "",
+        ativo: $act.checked
+      });
+    }).then(function(saved){
+      try {
+        sessionStorage.setItem("hapuck_admin_flash",
+          (editId ? "Alterações salvas em " : "Produto adicionado: ") + saved.nome + ".");
+      } catch(e){}
+      location.href = "dashboard.html";
+    }).catch(function(erro){
+      $err.textContent = "Não foi possível salvar: " + ((erro && erro.message) || "erro de conexão") + ".";
+      $err.hidden = false;
+      btn.disabled = false; btn.textContent = txt;
+    });
+  });
+})();
+});
+</script>
+</body>
+</html>
