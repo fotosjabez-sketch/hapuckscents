@@ -30,7 +30,7 @@
     "sabonete-kit3": { name: "Kit com 3 Sabonetes", price: 45.00, variation: "Redondo ou Quadrado", img: "assets/img/sabonete-kit3.webp" },
     "manteiga-eterna": { name: "Manteiga Corporal Eterna", price: 80.00, variation: "250 g", img: "assets/img/manteiga-eterna.webp" },
     "hidratante-corporal": { name: "Hidratante Corporal", price: 55.00, variation: "250 g · Eterna, It Girl ou Sweet & Flowers", img: "assets/img/hidratante-corporal.webp" },
-    "perfume-eterna-50": { name: "Perfume Eterna", price: 80.00, variation: "50 ml", img: "assets/img/col-perfumes.webp" },
+    "perfume-eterna-50": { name: "Perfume Eterna", price: 80.00, variation: "50 ml", img: "assets/img/perfume-eterna-50.webp" },
     "perfume-eterna-100": { name: "Perfume Eterna", price: 120.00, variation: "100 ml", img: "assets/img/col-perfumes.webp" },
     "it-girl-iconic": { name: "It Girl — Iconic", price: 70.00, variation: "120 ml + necessaire", img: "assets/img/it-girl-iconic.webp" },
     "it-girl-muse": { name: "It Girl — Muse", price: 70.00, variation: "120 ml + necessaire", img: "assets/img/it-girl-muse.webp" },
@@ -130,6 +130,14 @@
     var n = totalCount();
     $count.textContent = String(n);
     $count.hidden = n === 0;
+  }
+
+  function bumpCount() {
+    if (!$count) return;
+    $count.classList.remove("bump");
+    // força reflow para poder reiniciar a animação em cliques seguidos
+    void $count.offsetWidth;
+    $count.classList.add("bump");
   }
 
   function renderItems() {
@@ -268,12 +276,18 @@
 
     if (action === "add") {
       addItem(id, 1);
-      var original = btn.textContent;
-      btn.textContent = "Adicionado ✓";
+      bumpCount();
+      var label = btn.querySelector(".card__add-label");
+      var original = label ? label.textContent : null;
       btn.classList.add("is-added");
-      setTimeout(function () { btn.textContent = original; btn.classList.remove("is-added"); }, 1400);
+      if (label) label.textContent = "Adicionado";
+      setTimeout(function () {
+        btn.classList.remove("is-added");
+        if (label && original) label.textContent = original;
+      }, 1000);
     } else if (action === "buy") {
       addItem(id, 1);
+      bumpCount();
       openCart();
     }
   });
