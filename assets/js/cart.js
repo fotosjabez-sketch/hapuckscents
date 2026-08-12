@@ -30,12 +30,12 @@
     "sabonete-kit3": { name: "Kit com 3 Sabonetes", price: 45.00, variation: "Redondo ou Quadrado", img: "assets/img/sabonete-kit3.webp" },
     "manteiga-eterna": { name: "Manteiga Corporal Eterna", price: 80.00, variation: "250 g", img: "assets/img/manteiga-eterna.webp" },
     "hidratante-corporal": { name: "Hidratante Corporal", price: 55.00, variation: "250 g · Eterna, It Girl ou Sweet & Flowers", img: "assets/img/hidratante-corporal.webp" },
-    "oleo-corporal-feminino": { name: "Óleo Corporal Feminino", price: 65.00, variation: "200 ml", img: "assets/img/oleo-corporal-feminino.webp" },
-    "oleo-corporal-masculino": { name: "Óleo Corporal Masculino", price: 65.00, variation: "200 ml", img: "assets/img/oleo-corporal-masculino.webp" },
+    "oleo-corporal-feminino": { name: "Óleo Corporal Feminino", price: 60.00, variation: "200 ml", img: "assets/img/oleo-corporal-feminino.webp" },
+    "oleo-corporal-masculino": { name: "Óleo Corporal Masculino", price: 60.00, variation: "200 ml", img: "assets/img/oleo-corporal-masculino.webp" },
     "perfume-eterna-50": { name: "Perfume Eterna", price: 80.00, variation: "50 ml", img: "assets/img/perfume-eterna-50.webp" },
     "perfume-eterna-100": { name: "Perfume Eterna", price: 120.00, variation: "100 ml", img: "assets/img/col-perfumes.webp" },
-    "perfume-imperial-50": { name: "Perfume Imperial", price: 80.00, variation: "50 ml", img: "assets/img/perfume-imperial-50.webp" },
-    "perfume-imperial-100": { name: "Perfume Imperial", price: 120.00, variation: "100 ml", img: "assets/img/perfume-imperial-100.webp" },
+    "perfume-imperial-50": { name: "Perfume Imperial", price: 100.00, variation: "50 ml", img: "assets/img/perfume-imperial-50.webp" },
+    "perfume-imperial-100": { name: "Perfume Imperial", price: 150.00, variation: "100 ml", img: "assets/img/perfume-imperial-100.webp" },
     "it-girl-iconic": { name: "It Girl — Iconic", price: 75.00, variation: "120 ml + necessaire", img: "assets/img/it-girl-iconic.webp" },
     "it-girl-muse": { name: "It Girl — Muse", price: 75.00, variation: "120 ml + necessaire", img: "assets/img/it-girl-muse.webp" },
     "it-girl-glow": { name: "It Girl — Glow", price: 75.00, variation: "120 ml + necessaire", img: "assets/img/it-girl-glow.webp" }
@@ -305,6 +305,45 @@
       openCart();
     }
   });
+
+  /* ------------------- sincronia de preços com o Supabase ----------------
+     Os preços e nomes reais vêm do banco (editáveis no painel). Se o banco
+     não responder, seguimos com a tabela PRODUCTS acima — o carrinho nunca
+     para de funcionar por causa disso. */
+  function mergeProducts(lista) {
+    if (!lista || !lista.length) return;
+    lista.forEach(function (p) {
+      var atual = PRODUCTS[p.id] || {};
+      PRODUCTS[p.id] = {
+        name: p.nome || atual.name,
+        price: Number(p.preco) || 0,
+        variation: p.variacao != null ? p.variacao : atual.variation,
+        img: p.imagem || atual.img
+      };
+    });
+    // remove do carrinho itens que saíram do catálogo
+    var antes = cart.length;
+    cart = cart.filter(function (l) { return !!PRODUCTS[l.id] && PRODUCTS[l.id].price > 0; });
+    if (cart.length !== antes) persistCart(cart);
+    renderAll();
+  }
+
+  // a página do catálogo já busca os produtos: aproveitamos o mesmo resultado
+  document.addEventListener("hapuck:produtos-atualizados", function (e) {
+    mergeProducts(e.detail);
+  });
+
+  // nas demais páginas, busca própria (silenciosa, com desistência rápida)
+  if (window.hapuckClient && !document.getElementById("grid-cat")) {
+    var corta = new Promise(function (r) { setTimeout(function () { r({ error: "timeout" }); }, 4000); });
+    Promise.race([
+      window.hapuckClient.from("produtos")
+        .select("id,nome,preco,variacao,imagem").eq("ativo", true),
+      corta
+    ]).then(function (res) {
+      if (res && !res.error && res.data) mergeProducts(res.data);
+    }).catch(function () {});
+  }
 
   /* ------------------------------- init ----------------------------------- */
   renderPay();
