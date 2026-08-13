@@ -144,9 +144,16 @@ document.addEventListener("DOMContentLoaded", function(){
     return null;
   }
 
+  /** Caminho salvo é relativo à raiz do site (ex.: "assets/img/x.webp").
+      Dentro de /admin/ isso precisa de "../" na frente; URLs completas (Storage) não mudam. */
+  function resolveImg(caminho){
+    if (!caminho) return "";
+    return /^https?:\/\//.test(caminho) ? caminho : "../" + caminho;
+  }
+
   function thumb(p){
     if (p.imagem) {
-      return '<img class="thumb" src="'+Admin.escapeHtml(p.imagem)+'" alt="" loading="lazy" '+
+      return '<img class="thumb" src="'+Admin.escapeHtml(resolveImg(p.imagem))+'" alt="" loading="lazy" '+
              'onerror="this.outerHTML=\'<span class=\\\'thumb thumb--ph\\\'>'+
              '<svg viewBox=\\\'0 0 24 24\\\' fill=\\\'none\\\' stroke=\\\'currentColor\\\' stroke-width=\\\'1.4\\\'>'+
              '<rect x=\\\'3\\\' y=\\\'3\\\' width=\\\'18\\\' height=\\\'18\\\' rx=\\\'2\\\'/>'+

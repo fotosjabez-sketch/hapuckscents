@@ -176,10 +176,17 @@ document.addEventListener("DOMContentLoaded", function(){
     $prev.hidden = true; $ph.hidden = false;
   });
 
+  /** Caminho salvo é relativo à raiz do site; dentro de /admin/ precisa de "../" na frente.
+      URLs completas (Storage) e pré-visualizações locais (data:) não mudam. */
+  function resolveImg(caminho){
+    if (!caminho) return "";
+    return /^(https?:)?\/\/|^data:/.test(caminho) ? caminho : "../" + caminho;
+  }
+
   function showImage(src){
     imgData = src || "";
     if (imgData) {
-      $prev.src = imgData; $prev.hidden = false; $ph.hidden = true; $clear.hidden = false;
+      $prev.src = resolveImg(imgData); $prev.hidden = false; $ph.hidden = true; $clear.hidden = false;
     } else {
       $prev.removeAttribute("src"); $prev.hidden = true; $ph.hidden = false; $clear.hidden = true;
     }
