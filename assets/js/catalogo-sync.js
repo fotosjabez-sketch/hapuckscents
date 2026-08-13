@@ -54,7 +54,9 @@
   /** Monta o card exatamente no mesmo formato do HTML estático. */
   function buildCard(p) {
     var art = document.createElement("article");
-    art.className = "card rev is-in";
+    art.className = "card rev in";           // "in" é a classe real que o site usa para revelar
+    art.style.opacity = "1";                  // reforço direto: garante visível mesmo se a classe mudar
+    art.style.transform = "none";
     art.dataset.cat = p.categoria;
     art.dataset.id = p.id;
     art.dataset.name = p.nome;
@@ -136,12 +138,17 @@
     var vistos = {};
 
     lista.forEach(function (p) {
-      vistos[p.id] = true;
-      var art = grid.querySelector('.card[data-id="' + CSS.escape(p.id) + '"]');
-      if (art) {
-        updateCard(art, p);
-      } else {
-        grid.appendChild(buildCard(p));   // produto novo cadastrado no painel
+      try {
+        vistos[p.id] = true;
+        var art = grid.querySelector('.card[data-id="' + CSS.escape(p.id) + '"]');
+        if (art) {
+          updateCard(art, p);
+        } else {
+          grid.appendChild(buildCard(p));   // produto novo cadastrado no painel
+        }
+      } catch (e) {
+        // um produto com dado problemático não pode derrubar os outros 24
+        console.error("Hapuck: falha ao montar o card", p && p.id, e);
       }
     });
 
@@ -152,13 +159,19 @@
 
     // reordena conforme a ordem definida no banco
     lista.forEach(function (p) {
-      var art = grid.querySelector('.card[data-id="' + CSS.escape(p.id) + '"]');
-      if (art) grid.appendChild(art);
+      try {
+        var art = grid.querySelector('.card[data-id="' + CSS.escape(p.id) + '"]');
+        if (art) grid.appendChild(art);
+      } catch (e) {
+        console.error("Hapuck: falha ao reordenar", p && p.id, e);
+      }
     });
 
     // avisa o carrinho para reler os preços atualizados
     document.dispatchEvent(new CustomEvent("hapuck:produtos-atualizados", { detail: lista }));
-  }).catch(function () {
-    /* qualquer erro: mantém o catálogo estático, sem alarde para o visitante */
+  }).catch(function (e) {
+    /* qualquer erro: mantém o catálogo estático, sem alarde para o visitante.
+       Fica registrado no console só para quem for depurar (F12). */
+    console.error("Hapuck: sincronização com o catálogo falhou, mantendo versão estática.", e);
   });
 })();
