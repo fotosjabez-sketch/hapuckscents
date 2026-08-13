@@ -76,7 +76,10 @@
     art.innerHTML =
       '<div class="card__link" data-cur="ver">' +
         '<figure class="frame">' +
-          '<img src="' + esc(imgSrc(p.imagem)) + '" alt="' + esc(p.nome) + '" loading="lazy">' + LEAF +
+          '<img src="' + esc(imgSrc(p.imagem)) + '" alt="' + esc(p.nome) + '" loading="lazy" ' +
+          'onerror="var f=this.closest(&quot;.frame&quot;);if(f){var c=f.querySelector(&quot;.cap&quot;);' +
+          'if(c)c.style.opacity=1;var l=f.querySelector(&quot;.leaf&quot;);if(l)l.style.opacity=1;}' +
+          'this.style.opacity=0;">' + LEAF +
           '<figcaption class="cap">Foto: ' + esc(p.nome) + '</figcaption>' +
           '<span class="veu"><span>' + esc(p.descricao || "") + '</span></span>' +
         '</figure>' +
