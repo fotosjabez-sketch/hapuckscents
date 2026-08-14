@@ -75,8 +75,9 @@
 
     art.innerHTML =
       '<div class="card__link" data-cur="ver">' +
-        '<figure class="frame">' +
+        '<figure class="frame in">' +
           '<img src="' + esc(imgSrc(p.imagem)) + '" alt="' + esc(p.nome) + '" ' +
+          'style="position:relative;z-index:2;opacity:1;filter:none;mix-blend-mode:normal;" ' +
           'onload="console.log(&quot;Hapuck: foto carregou OK —&quot;, this.naturalWidth+&quot;x&quot;+this.naturalHeight, this.src)" ' +
           'onerror="console.error(&quot;Hapuck: foto FALHOU ao carregar —&quot;, this.src);' +
           'var f=this.closest(&quot;.frame&quot;);if(f){var c=f.querySelector(&quot;.cap&quot;);' +
