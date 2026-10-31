@@ -15,5 +15,5 @@ jobs:
       - name: Consulta a tabela produtos
         run: |
           URL=$(grep -oE 'https://[a-z0-9]+\.supabase\.co' assets/js/supabase-config.js)
-          KEY=$(grep -oE 'sb_publishable_[A-Za-z0-9_]+' assets/js/supabase-config.js)
+          KEY=$(grep -oE 'sb_publishable_[A-Za-z0-9_-]+' assets/js/supabase-config.js)
           curl -sS --fail -H "apikey: $KEY" "$URL/rest/v1/produtos?select=id&limit=1"

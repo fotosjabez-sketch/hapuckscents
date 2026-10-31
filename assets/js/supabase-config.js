@@ -8,8 +8,8 @@
    Nunca coloque aqui a service_role key.
    ========================================================================= */
 window.HAPUCK_SUPABASE = {
-  url: "https://mbwjxdajqtgpuyjexqyr.supabase.co",
-  key: "sb_publishable_oM2McMeK6R6cROh3SSgTnA_aLcGeyRe",
+  url: "https://mpkbcczolkuvmfdgdbmj.supabase.co",
+  key: "sb_publishable_Cj8_kRrzervzR-JhmlzEkA_amfwee-q",
   bucket: "produtos"
 };
 
